@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Tecnology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -29,8 +30,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::orderBy('name', 'asc')->get();
+        $tecnologies = Tecnology::orderBy('name', 'asc')->get();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'tecnologies'));
     }
 
     /**
@@ -38,30 +40,68 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //La validazione la fa StoreProjectRequest
+        // //La validazione la fa StoreProjectRequest
 
-        // $request->validate([
-        //     'title'=> 'required|max:200',
-        //     'creation_date'=> 'required|date',
-        //     'description'=> 'nullable',
-        // ]);
+        // // $request->validate([
+        // //     'title'=> 'required|max:200',
+        // //     'creation_date'=> 'required|date',
+        // //     'description'=> 'nullable',
+        // // ]);
 
-        // $form_data = $request->all();
+        // // $form_data = $request->all();
 
-        $form_data = $request->validated();// per la validazione
+        // $form_data = $request->validated();// per la validazione
 
-        $new_project = new Project();
+        // $new_project = new Project();
 
-        $new_project->title = $form_data['title'];
-        $new_project->slug = Str::slug($new_project->title);
-        $new_project->link = 'https://github.com/Cigno05/'.(Str::slug($new_project->title));
-        $new_project->creation_date = $form_data['creation_date'];
-        $new_project->description = $form_data['description'];
-        $new_project->type_id = $form_data['type_id'];
+        // $new_project->title = $form_data['title'];
+        // $new_project->slug = Str::slug($new_project->title);
+        // $new_project->link = 'https://github.com/Cigno05/'.(Str::slug($new_project->title));
+        // $new_project->creation_date = $form_data['creation_date'];
+        // $new_project->description = $form_data['description'];
+        // $new_project->type_id = $form_data['type_id'];
+        
 
-        $new_project->save();
+        // $new_project->save();
+        
+        // return to_route("projects.index");
+        
+        //---------------------------------------------------------------------------------------------------------------------------------
+        
+        
+        $form_data = $request->validated();
+        
+        // dd($form_data);
 
-        return to_route("projects.index");
+        $base_slug = Str::slug($form_data['name']);
+        $slug = $base_slug;
+        // dd($form_data, $slug);
+        $n = 0;
+
+        do {
+            // SELECT * FROM `projects` WHERE `slug` = ?
+            $find = Project::where('slug', $slug)->first(); // null | Project
+
+            if ($find !== null) {
+                $n++;
+                $slug = $base_slug . '-' . $n;
+            }
+        } while ($find !== null);
+
+        $form_data['slug'] = $slug;
+
+        // creare l'istanza e salvarla nel db
+        $project = Project::create($form_data);
+
+        // controlliamo se sono stati inviati dei tecnologies
+        if ($request->has('tecnologies')) {
+            $project->tecnologies()->attach($request->tecnologies);
+        }
+
+
+
+        // redirect alla rotta show
+        return to_route('admin.projects.show', $project);
 
     }
 
@@ -80,8 +120,9 @@ class ProjectController extends Controller
     {
 
         $types = Type::orderBy('name', 'asc')->get();
-
-        return view("admin.projects.edit", compact("project"), compact('types'));
+        $tecnologies = Tecnology::orderBy('name', 'asc')->get();
+        // dd(compact('tecnologies'));
+        return view("admin.projects.edit", compact("project", 'types', 'tecnologies'));
     }
 
     /**

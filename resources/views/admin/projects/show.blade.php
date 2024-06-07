@@ -16,6 +16,13 @@ show
                     <p class="card-text">Project Type: {{ $project->type ? $project->type->name : '' }}</p>
                     <p class="card-text">Project Description: <br>{{ $project->description }}</p>
                     <p class="card-text">Created: {{ $project->creation_date }}</p>
+                    <p class="card-text">Tecnologies used:</p>
+                    
+                    <ul class="list-unstyled d-flex flex-row flex-wrap gap-2 justify-content-center">
+                        @foreach ($project->tecnologies as $tecnology)
+                            <li>{{ $tecnology->name }}</li>
+                        @endforeach
+                    </ul>
                     <div class="d-flex justify-content-center gap-3">
                         <p><a href="{{ $project->link }}" class="card-link">My Github <i
                                     class="fa-brands fa-github"></i></a></p>

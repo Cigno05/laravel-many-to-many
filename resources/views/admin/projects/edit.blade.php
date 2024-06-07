@@ -45,6 +45,10 @@ edit-pro
                     <input type="date" class="form-control" id="creation_date" name="creation_date"
                     value="{{ old('creation_date', $project->creation_date) }}">
                 </div>
+
+                <div class="d-flex gap-2">
+            
+          </div>
                             
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>

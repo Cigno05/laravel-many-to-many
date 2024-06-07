@@ -15,6 +15,12 @@ Index-pro
                     <h2 class="card-title">{{ $project->title }}</h2>
                     <p class="card-text">Created: {{ $project->creation_date }}</p>
                     <p class="card-text">Project Type: {{ $project->type ? $project->type->name : '' }}</p>
+                    <p class="card-text">Tecnologies used:</p>
+                    <ul class="list-unstyled">
+                        <li>
+                            {{ $project->title }}
+                        </li>
+                    </ul>
                     <p><a href="{{ route('projects.show', $project) }}" class="card-link">Info <i class="fa-solid fa-circle-info"></i></a></p>
                     <div class="d-flex justify-content-center gap-3">
                         <p><a href="{{ $project->link }}" class="card-link">My Github <i

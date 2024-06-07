@@ -17,7 +17,8 @@ create-pro
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Project Title" value="{{ old('title') }}">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Project Title"
+                        value="{{ old('title') }}">
                 </div>
 
                 <div class="mb-3">
@@ -29,7 +30,22 @@ create-pro
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group mb-3 ">
+                <label class="form-label fw-bold" for="tecnology_id">Select Project tecnologies</label>
                 
+                <div class="d-flex gap-2">
+
+                    @foreach ($tecnologies as $tecnology)
+                        <div class="form-check ">
+                            <input @checked( in_array($tecnology->id, old('tecnologies', []))) name="tecnologies[]" class="form-check-input" type="checkbox" value="{{$tecnology->id}}" id="tecnology-{{$tecnology->id}}">
+                            <label class="form-check-label" for="tecnology-{{$tecnology->id}}">
+                                {{$tecnology->name}}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea type="text" row="10" class="form-control" id="description" name="description"
