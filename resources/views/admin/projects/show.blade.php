@@ -18,11 +18,10 @@ show
                     <p class="card-text">Created: {{ $project->creation_date }}</p>
                     <p class="card-text">Tecnologies used:</p>
                     
-
                     <!-- aggiungere un if -->
                     <ul class="list-unstyled d-flex flex-row flex-wrap gap-2 justify-content-center">
                         @foreach ($project->tecnologies as $tecnology)
-                            <li>{{ $tecnology->name }}</li>
+                            <li>{{ ucfirst($tecnology->name) }}</li>
                         @endforeach
                     </ul>
                     <div class="d-flex justify-content-center gap-3">
