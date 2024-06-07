@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTecnologyRequest;
+use App\Http\Requests\UpdateTecnologyRequest;
 use App\Models\Tecnology;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,10 @@ class TecnologyController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $tecnologies = Tecnology::all();
 
+        return view("admin.tecnologies.index");
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -27,7 +30,7 @@ class TecnologyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTecnologyRequest $request)
     {
         //
     }
@@ -51,7 +54,7 @@ class TecnologyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tecnology $tecnology)
+    public function update(UpdateTecnologyRequest $request, Tecnology $tecnology)
     {
         //
     }
