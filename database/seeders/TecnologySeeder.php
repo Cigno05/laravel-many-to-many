@@ -16,7 +16,7 @@ class TecnologySeeder extends Seeder
     {
         $tecnologies = ['css', 'bootstrap', 'js', 'laravel', 'php', 'vue', 'vite', 'sql'];
 
-        foreach ($tecnologies as $key) {
+        foreach ($tecnologies as $tecnology) {
 
             $tecnology = new Tecnology();
 
