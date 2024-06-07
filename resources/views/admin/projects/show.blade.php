@@ -12,12 +12,14 @@ show
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">{{ $project->title }}</h2>
+                    <h1 class="card-title mb-4">{{ $project->title }}</h1>
                     <p class="card-text">Project Type: {{ $project->type ? $project->type->name : '' }}</p>
                     <p class="card-text">Project Description: <br>{{ $project->description }}</p>
                     <p class="card-text">Created: {{ $project->creation_date }}</p>
                     <p class="card-text">Tecnologies used:</p>
                     
+
+                    <!-- aggiungere un if -->
                     <ul class="list-unstyled d-flex flex-row flex-wrap gap-2 justify-content-center">
                         @foreach ($project->tecnologies as $tecnology)
                             <li>{{ $tecnology->name }}</li>

@@ -40,68 +40,71 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        // //La validazione la fa StoreProjectRequest
+        //La validazione la fa StoreProjectRequest
 
-        // // $request->validate([
-        // //     'title'=> 'required|max:200',
-        // //     'creation_date'=> 'required|date',
-        // //     'description'=> 'nullable',
-        // // ]);
+        // $request->validate([
+        //     'title'=> 'required|max:200',
+        //     'creation_date'=> 'required|date',
+        //     'description'=> 'nullable',
+        // ]);
 
-        // // $form_data = $request->all();
+        // $form_data = $request->all();
 
-        // $form_data = $request->validated();// per la validazione
+        $form_data = $request->validated();// per la validazione
 
-        // $new_project = new Project();
+        $new_project = new Project();
 
-        // $new_project->title = $form_data['title'];
-        // $new_project->slug = Str::slug($new_project->title);
-        // $new_project->link = 'https://github.com/Cigno05/'.(Str::slug($new_project->title));
-        // $new_project->creation_date = $form_data['creation_date'];
-        // $new_project->description = $form_data['description'];
-        // $new_project->type_id = $form_data['type_id'];
+        $new_project->title = $form_data['title'];
+        $new_project->slug = Str::slug($new_project->title);
+        $new_project->link = 'https://github.com/Cigno05/'.(Str::slug($new_project->title));
+        $new_project->creation_date = $form_data['creation_date'];
+        $new_project->description = $form_data['description'];
+        $new_project->type_id = $form_data['type_id'];
         
+        $new_project->save();
+        if ($request->has('tecnologies')) {
 
-        // $new_project->save();
+            $new_project->tecnologies()->attach($request->tecnologies);
+        }
         
-        // return to_route("projects.index");
+        return to_route("projects.index");
         
         //---------------------------------------------------------------------------------------------------------------------------------
         
         
-        $form_data = $request->validated();
+        // $form_data = $request->validated();
         
-        // dd($form_data);
+        // // dd($form_data);
 
-        $base_slug = Str::slug($form_data['name']);
-        $slug = $base_slug;
-        // dd($form_data, $slug);
-        $n = 0;
+        // $base_slug = Str::slug($form_data['name']);
+        // $slug = $base_slug;
+        // // dd($form_data, $slug);
+        // $n = 0;
 
-        do {
-            // SELECT * FROM `projects` WHERE `slug` = ?
-            $find = Project::where('slug', $slug)->first(); // null | Project
+        // do {
+        //     // SELECT * FROM `projects` WHERE `slug` = ?
+        //     $find = Project::where('slug', $slug)->first(); // null | Project
 
-            if ($find !== null) {
-                $n++;
-                $slug = $base_slug . '-' . $n;
-            }
-        } while ($find !== null);
+        //     if ($find !== null) {
+        //         $n++;
+        //         $slug = $base_slug . '-' . $n;
+        //     }
+        // } while ($find !== null);
 
-        $form_data['slug'] = $slug;
+        // $form_data['slug'] = $slug;
 
-        // creare l'istanza e salvarla nel db
-        $project = Project::create($form_data);
+        // // creare l'istanza e salvarla nel db
+        // $project = Project::create($form_data);
 
-        // controlliamo se sono stati inviati dei tecnologies
-        if ($request->has('tecnologies')) {
-            $project->tecnologies()->attach($request->tecnologies);
-        }
+        // // controlliamo se sono stati inviati dei tecnologies
+        // if ($request->has('tecnologies')) {
+        //     $project->tecnologies()->attach($request->tecnologies);
+        // }
 
 
 
-        // redirect alla rotta show
-        return to_route('admin.projects.show', $project);
+        // // redirect alla rotta show
+        // return to_route('admin.projects.show', $project);
 
     }
 
@@ -153,8 +156,13 @@ class ProjectController extends Controller
         $project->description = $form_data['description'];
         $project->type_id = $form_data['type_id'];
 
-        $project->save();
 
+        $project->save();
+        if ($request->has('tecnologies')) {
+            $project->tecnologies()->sync($request->tecnologies);
+        } else {
+            $project->tecnologies()->sync([]);
+        }
         return to_route("projects.show", $project);
     }
 

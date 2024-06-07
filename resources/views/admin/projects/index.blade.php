@@ -12,7 +12,7 @@ Index-pro
         <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4 card-group">
             <div class="card" >
                 <div class="card-body">
-                    <h2 class="card-title">{{ $project->title }}</h2>
+                    <h1 class="card-title mb-4">{{ $project->title }}</h1>
                     <p class="card-text">Created: {{ $project->creation_date }}</p>
                     <p class="card-text">Project Type: {{ $project->type ? $project->type->name : '' }}</p>
                     <p class="card-text">Tecnologies used:</p>
