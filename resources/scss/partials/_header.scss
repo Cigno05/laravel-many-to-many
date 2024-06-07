@@ -1,0 +1,40 @@
+.header-nav, .project-page, .type-page {
+
+    // a {
+    //     color: white;
+    // }
+
+    a:hover{
+        color: var(--brand-red);
+    }
+
+
+    .dropdown-item {
+        color:  var(--brand-red);
+
+        &:hover {
+            background-color: #515151;
+            color: white;
+        }
+    }
+
+    .dropdown-toggle {
+        color: white;
+    }
+
+    .dropdown-toggle:after, .nav-link::after {
+        color: var(--brand-red);
+    }
+
+    img {
+        width: 50px;
+    }
+
+    .dropdown-menu {
+        background-color: #212529;
+        border: solid 1px var(--brand-red);
+    }
+
+    
+}
+
