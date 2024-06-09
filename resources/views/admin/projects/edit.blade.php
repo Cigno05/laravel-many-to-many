@@ -35,13 +35,13 @@ edit-pro
             </div>
             <div class="d-flex gap-2">
 
-                @foreach ($tecnologies as $tecnology)
+                @foreach ($technologies as $technology)
                     <div class="form-check ">
-                        <input @checked(in_array($tecnology->id, old('tecnologies', $project->tecnologies->pluck('id')->all()))) name="tecnologies[]"
-                            class="form-check-input" type="checkbox" value="{{$tecnology->id}}"
-                            id="tecnology-{{$tecnology->id}}">
-                        <label class="form-check-label" for="tecnology-{{$tecnology->id}}">
-                            {{$tecnology->name}}
+                        <input @checked(in_array($technology->id, old('technologies', $project->technologies->pluck('id')->all()))) name="technologies[]"
+                            class="form-check-input" type="checkbox" value="{{$technology->id}}"
+                            id="technology-{{$technology->id}}">
+                        <label class="form-check-label" for="technology-{{$technology->id}}">
+                            {{$technology->name}}
                         </label>
                     </div>
                 @endforeach

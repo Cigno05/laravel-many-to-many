@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Tecnology;
+use App\Models\Technology;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class TecnologyPolicy
+class TechnologyPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class TecnologyPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Tecnology $tecnology): bool
+    public function view(User $user, Technology $technology): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class TecnologyPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Tecnology $tecnology): bool
+    public function update(User $user, Technology $technology): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class TecnologyPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Tecnology $tecnology): bool
+    public function delete(User $user, Technology $technology): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class TecnologyPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Tecnology $tecnology): bool
+    public function restore(User $user, Technology $technology): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class TecnologyPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Tecnology $tecnology): bool
+    public function forceDelete(User $user, Technology $technology): bool
     {
         //
     }

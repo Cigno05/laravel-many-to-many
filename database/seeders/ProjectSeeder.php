@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use App\Models\Tecnology;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,7 +18,7 @@ class ProjectSeeder extends Seeder
     public function run(Faker $faker): void
     {
         $type_ids = Type::all()->pluck("id")->all();
-        $tecnology_ids = Tecnology::all()->pluck('id')->all(); //recupero gli id della tabella tecnology
+        $technology_ids = Technology::all()->pluck('id')->all(); //recupero gli id della tabella technology
         for ($i = 0; $i < 20; $i++) {
 
             $project = new Project();
@@ -32,8 +32,8 @@ class ProjectSeeder extends Seeder
 
             $project->save();
 
-            $random_tecnologiy_ids = $faker->randomElements($tecnology_ids, null); // many to many
-            $project->tecnologies()->attach($random_tecnologiy_ids);
+            $random_technologiy_ids = $faker->randomElements($technology_ids, null); // many to many
+            $project->technologies()->attach($random_technologiy_ids);
 
 
 

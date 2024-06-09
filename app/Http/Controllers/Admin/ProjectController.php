@@ -8,7 +8,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
-use App\Models\Tecnology;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -30,9 +30,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::orderBy('name', 'asc')->get();
-        $tecnologies = Tecnology::orderBy('name', 'asc')->get();
+        $technologies = Technology::orderBy('name', 'asc')->get();
 
-        return view('admin.projects.create', compact('types', 'tecnologies'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -62,9 +62,9 @@ class ProjectController extends Controller
         $new_project->type_id = $form_data['type_id'];
         
         $new_project->save();
-        if ($request->has('tecnologies')) {
+        if ($request->has('technologies')) {
 
-            $new_project->tecnologies()->attach($request->tecnologies);
+            $new_project->technologies()->attach($request->technologies);
         }
         
         return to_route("projects.index");
@@ -96,9 +96,9 @@ class ProjectController extends Controller
         // // creare l'istanza e salvarla nel db
         // $project = Project::create($form_data);
 
-        // // controlliamo se sono stati inviati dei tecnologies
-        // if ($request->has('tecnologies')) {
-        //     $project->tecnologies()->attach($request->tecnologies);
+        // // controlliamo se sono stati inviati dei technologies
+        // if ($request->has('technologies')) {
+        //     $project->technologies()->attach($request->technologies);
         // }
 
 
@@ -123,9 +123,9 @@ class ProjectController extends Controller
     {
 
         $types = Type::orderBy('name', 'asc')->get();
-        $tecnologies = Tecnology::orderBy('name', 'asc')->get();
-        // dd(compact('tecnologies'));
-        return view("admin.projects.edit", compact("project", 'types', 'tecnologies'));
+        $technologies = Technology::orderBy('name', 'asc')->get();
+        // dd(compact('technologies'));
+        return view("admin.projects.edit", compact("project", 'types', 'technologies'));
     }
 
     /**
@@ -158,10 +158,10 @@ class ProjectController extends Controller
 
 
         $project->save();
-        if ($request->has('tecnologies')) {
-            $project->tecnologies()->sync($request->tecnologies);
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
         } else {
-            $project->tecnologies()->sync([]);
+            $project->technologies()->sync([]);
         }
         return to_route("projects.show", $project);
     }

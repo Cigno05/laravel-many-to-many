@@ -31,15 +31,15 @@ create-pro
                     </select>
                 </div>
                 <div class="form-group mb-3 ">
-                <label class="form-label fw-bold" for="tecnology_id">Select Project tecnologies</label>
+                <label class="form-label fw-bold" for="technology_id">Select Project technologies</label>
                 
                 <div class="d-flex gap-2">
 
-                    @foreach ($tecnologies as $tecnology)
+                    @foreach ($technologies as $technology)
                         <div class="form-check ">
-                            <input @checked( in_array($tecnology->id, old('tecnologies', []))) name="tecnologies[]" class="form-check-input" type="checkbox" value="{{$tecnology->id}}" id="tecnology-{{$tecnology->id}}">
-                            <label class="form-check-label" for="tecnology-{{$tecnology->id}}">
-                                {{$tecnology->name}}
+                            <input @checked( in_array($technology->id, old('technologies', []))) name="technologies[]" class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technology-{{$technology->id}}">
+                            <label class="form-check-label" for="technology-{{$technology->id}}">
+                                {{$technology->name}}
                             </label>
                         </div>
                     @endforeach

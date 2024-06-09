@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pageTitle')
+@section('title')
 
 show
 
@@ -16,12 +16,12 @@ show
                     <p class="card-text">Project Type: {{ $project->type ? $project->type->name : '' }}</p>
                     <p class="card-text">Project Description: <br>{{ $project->description }}</p>
                     <p class="card-text">Created: {{ $project->creation_date }}</p>
-                    <p class="card-text">Tecnologies used:</p>
+                    <p class="card-text">Technologies used:</p>
                     
                     <!-- aggiungere un if -->
                     <ul class="list-unstyled d-flex flex-row flex-wrap gap-2 justify-content-center">
-                        @foreach ($project->tecnologies as $tecnology)
-                            <li>{{ ucfirst($tecnology->name) }}</li>
+                        @foreach ($project->technologies as $technology)
+                            <li>{{ ucfirst($technology->name) }}</li>
                         @endforeach
                     </ul>
                     <div class="d-flex justify-content-center gap-3">

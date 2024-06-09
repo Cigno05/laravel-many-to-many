@@ -15,12 +15,12 @@ Index-pro
                         <h1 class="card-title mb-4">{{ $project->title }}</h1>
                         <p class="card-text">Created: {{ $project->creation_date }}</p>
                         <p class="card-text">Project Type: {{ $project->type ? $project->type->name : '' }}</p>
-                        <p class="card-text">Tecnologies used:</p>
+                        <p class="card-text">Technologies used:</p>
                         
                         <ul class="list-unstyled d-flex flex-row flex-wrap gap-2 justify-content-center">
-                                @foreach ($project->tecnologies as $tecnology)
+                                @foreach ($project->technologies as $technology)
                                 <li>
-                                    {{ ucfirst($tecnology->name) }}
+                                    {{ ucfirst($technology->name) }}
                                 </li>
                             @endforeach
                             </ul>

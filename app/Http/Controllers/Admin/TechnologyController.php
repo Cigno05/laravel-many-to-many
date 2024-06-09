@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTecnologyRequest;
-use App\Http\Requests\UpdateTecnologyRequest;
-use App\Models\Tecnology;
+use App\Http\Requests\StoreTechnologyRequest;
+use App\Http\Requests\UpdateTechnologyRequest;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 
-class TecnologyController extends Controller
+class TechnologyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tecnologies = Tecnology::all();
+        $technologies = Technology::all();
 
-        return view("admin.tecnologies.index");
+        return view("admin.technologies.index");
     }
     /**
      * Show the form for creating a new resource.
@@ -30,7 +30,7 @@ class TecnologyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTecnologyRequest $request)
+    public function store(StoreTechnologyRequest $request)
     {
         //
     }
@@ -38,7 +38,7 @@ class TecnologyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tecnology $tecnology)
+    public function show(Technology $technology)
     {
         //
     }
@@ -46,7 +46,7 @@ class TecnologyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tecnology $tecnology)
+    public function edit(Technology $technology)
     {
         //
     }
@@ -54,7 +54,7 @@ class TecnologyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTecnologyRequest $request, Tecnology $tecnology)
+    public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
         //
     }
@@ -62,7 +62,7 @@ class TecnologyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tecnology $tecnology)
+    public function destroy(Technology $technology)
     {
         //
     }
