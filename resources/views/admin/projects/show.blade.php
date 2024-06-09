@@ -43,8 +43,8 @@ show
                             <div class="my-modal">
                                 <div class="modal-container">
                                     <h5 class="text-center me-5">Delete this project?</h5>
-                                    <span class="btn btn-danger modal-run mx-5">Yes, Delete</span>
-                                    <span class="btn btn-success modal-stop">No, Comeback</span>
+                                    <span class="btn btn-dark modal-run mx-5">Yes, Delete</span>
+                                    <span class="btn btn-dark modal-stop">No, Comeback</span>
                                 </div>
                             </div>
 

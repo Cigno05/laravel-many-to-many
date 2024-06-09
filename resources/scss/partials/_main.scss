@@ -2,11 +2,11 @@ main {
     padding-top: 100px;
     padding-bottom: 50px;
     color: white;
-    background-color: var(--dark-gray);
+    background-color: var(--brand-bg);
 
     .card{
-        border: solid 2px var(--brand-red);
-        background-color: #515151;
+        border: solid 2px var(--brand-color);
+        background-color: var(--card-bg);
         color: white;
         text-align: center;
 
@@ -17,6 +17,14 @@ main {
         & a {
             text-decoration: none;
             color: currentColor;
+        }
+
+        & a:hover{
+            color: var(--brand-color);
+        }
+
+        & i, .card-title {
+            color: var(--brand-color);
         }
 
         
