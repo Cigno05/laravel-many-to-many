@@ -31,7 +31,8 @@
     }
 
     .dropdown-menu {
-        background-color: #212529;
+        background-image: url('../img/texture-card.jpg');
+    background-size: cover;
         border: solid 1px var(--brand-color);
     }
 

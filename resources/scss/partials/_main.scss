@@ -2,31 +2,10 @@ main {
     padding-top: 100px;
     padding-bottom: 50px;
     color: white;
-    background-color: var(--brand-bg);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 30%, rgba(85,85,85,1) 20%, rgba(85,85,85,1) 20%, rgba(0,0,0,1) 30%,);
+    
+}
 
-    .card{
-        border: solid 2px var(--brand-color);
-        background: var(--card-bg);
-        color: white;
-        text-align: center;
-
-        & img {
-            width: 25px;
-        }
-
-        & a {
-            text-decoration: none;
-            color: currentColor;
-        }
-
-        & a:hover{
-            color: var(--brand-color);
-        }
-
-        & i, .card-title {
-            color: var(--brand-color);
-        }
-
-        
-    }
+#app {
+    height: 100vh;
 }

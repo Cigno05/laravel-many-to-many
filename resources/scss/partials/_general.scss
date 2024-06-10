@@ -6,6 +6,20 @@
 
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 50%;
+}
+::-webkit-scrollbar-track {
+    background: black; 
+}
+::-webkit-scrollbar-thumb {
+    background: var(--brand-bg); 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-color); 
+}
+
 
 body {
     color: white;
@@ -21,4 +35,8 @@ body {
         border: 1px solid var(--brand-color);
     }
 }
+
+// [class^="table"]  {
+//     background: var(--card-bg);
+// }
 

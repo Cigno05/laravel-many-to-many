@@ -6,70 +6,41 @@ Index-typ
 @section('content')
 
 
-<div class="container w-50">
-    <div class="row">
-        <table class="table">
-            <thead>
-                <tr>
+<div class="container">
+    <div class="row justify-content-center">
+        @foreach ($types as $type)
+        <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4 card-group">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">{{ ucfirst($type->name) }}</h1>
                     
-                    <th>Project Type</th>
-                    @auth
-                    <th>Edit</th>
-                    <th>Delete</th>
-                    @endif
-                </tr>
-            </thead>
-            @foreach ($types as $type)
-                <tbody>
-                    <tr>
-                        
-                        <td>{{ $type->name }}</td>
+                    <div class="button-container gap-2 d-flex justify-content-center">
                         @auth
-                        <td><a href="{{ route('types.edit', $type) }}" class="btn btn-dark">Edit</a></td>
-                        <td>
-                            <form class="form-delete" action="{{ route('types.destroy', $type) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
+                        <a href="{{ route('types.edit', $type) }}" class="btn btn-dark">Edit</a>
+                        <form class="form-delete" action="{{ route('types.destroy', $type) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
 
-                                <button class="btn btn-dark">Delete</button>
+                            <button class="btn btn-dark btn-delete">Delete</button>
 
-                                <div class="my-modal">
-                                    <div class="modal-container">
-                                        <h5 class="text-center me-5">Delete this type?</h5>
-                                        <span class="btn btn-danger modal-run mx-5">Yes, Delete</span>
-                                        <span class="btn btn-success modal-stop">No, Comeback</span>
-                                    </div>
+                            <div class="my-modal">
+                                <div class="modal-container d-flex flex-column align-items-baseline gap-1">
+                                    <h5 class="text-center me-5">Delete this type?</h5>
+                                    <span class="btn btn-dark modal-run mx-5">Yes, Delete</span>
+                                    <span class="btn btn-dark modal-stop">No, Comeback</span>
                                 </div>
+                            </div>
 
-                            </form>
-                        </td>
+                        </form>
                         @endif
-                    </tr>
-                </tbody>
-            @endforeach
-        </table>
-
-
-
-
-
-
-
-
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-5 card-group">
-                    <div class="card" >
-                        <div class="card-body">
-                            <h2 class="card-title">{{ $type->title }}</h2>
-                            <p class="card-text">Created: {{ $type->creation_date }}</p>
-                            <p class="card-text">type Type: {{ $type->type ? $type->type->name : '' }}</p>
-                            <p><a href="{{ $type->link }}" class="card-link">Link to my Github</a></p>
-                            <p><a href="{{ $type->link }}/{{ $type->slug }}" class="card-link">Link to repository on Github</a></p>
-                            <p><a href="{{ route('types.show', $type) }}" class="card-link">Info</a></p>
-
-                        </div>
                     </div>
 
-                </div> -->
+                </div>
+            </div>
+
+        </div>
+
+        @endforeach
 
     </div>
 </div>

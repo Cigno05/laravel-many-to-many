@@ -90,7 +90,7 @@
                 @endif
                 @auth
                 <li>
-                    <ul class="navbar-nav ml-auto project-page">
+                    <ul class="navbar-nav ml-auto technology-page">
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -100,7 +100,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('technologies.index')}}">{{ __('Technologies') }}</a>
-                                <a class="dropdown-item" href="{{ route('projects.create')}}">{{ __('New Project') }}</a>
+                                <a class="dropdown-item" href="{{ route('technologies.create')}}">{{ __('New Technology') }}</a>
 
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -113,7 +113,7 @@
                 </li>
                 @else
                 <li>
-                    <a class="nav-link" href="{{route('projects.index')}}">{{ __('Projects') }}</a>
+                    <a class="nav-link" href="{{route('technologies.index')}}">{{ __('Technologies') }}</a>
                 </li>
                 @endif
             </ul>

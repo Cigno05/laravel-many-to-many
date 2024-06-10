@@ -38,7 +38,7 @@ show
                             @csrf
                             @method('DELETE')
 
-                            <button class="btn btn-dark">Delete</button>
+                            <button class="btn btn-dark btn-delete">Delete</button>
 
                             <div class="my-modal">
                                 <div class="modal-container">

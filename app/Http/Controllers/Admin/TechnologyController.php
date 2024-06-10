@@ -42,7 +42,7 @@ class TechnologyController extends Controller
 
         $new_technology->save();
 
-        return to_route("tecnologies.index");
+        return to_route("technologies.index");
     }
 
     /**

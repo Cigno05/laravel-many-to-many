@@ -13,7 +13,7 @@ class Type extends Model
     
 
 
-    public function Projects() {
+    public function projects() {
         return $this->hasMany(Project::class);
     }
 }

@@ -7,7 +7,7 @@ create-pro
 @endsection
 
 @section('content')
-<maih>
+
     <section>
         <div class="container w-50 mt-5">
             <h1>Add a new project!</h1>
@@ -73,6 +73,6 @@ create-pro
             </div>
         @endif
     </section>
-</maih>
+
 
 @endsection
