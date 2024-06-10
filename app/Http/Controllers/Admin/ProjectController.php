@@ -11,17 +11,30 @@ use App\Models\Type;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
 
-        return view('admin.projects.index', compact('projects'));
+        $types = Type::orderBy('name', 'asc')->get();
+
+        $query = Project::with(['type', 'type.projects']); 
+        // [associo 'type' a 'project', richiamo tutti 'projects' associati a 'type'
+
+        $filters = $request->all();
+
+        if(isset($filters['type_id'])) {
+            $query->where('type_id', $filters['type_id']);
+        }
+
+        $projects = $query->get();
+
+        return view('admin.projects.index', compact('projects', 'types'));
     }
 
     /**
