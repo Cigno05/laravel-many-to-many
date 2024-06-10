@@ -14,8 +14,8 @@ Index-typ
                     
                     <th>Project Type</th>
                     @auth
-                    <th>edit</th>
-                    <th>delete</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                     @endif
                 </tr>
             </thead>
@@ -25,13 +25,13 @@ Index-typ
                         
                         <td>{{ $type->name }}</td>
                         @auth
-                        <td><a href="{{ route('types.edit', $type) }}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="{{ route('types.edit', $type) }}" class="btn btn-dark">Edit</a></td>
                         <td>
                             <form class="form-delete" action="{{ route('types.destroy', $type) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
 
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-dark">Delete</button>
 
                                 <div class="my-modal">
                                     <div class="modal-container">

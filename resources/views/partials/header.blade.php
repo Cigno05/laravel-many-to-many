@@ -88,6 +88,34 @@
                     <a class="nav-link" href="{{route('types.index')}}">{{ __('Types') }}</a>
                 </li>
                 @endif
+                @auth
+                <li>
+                    <ul class="navbar-nav ml-auto project-page">
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Technologies Page
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('technologies.index')}}">{{ __('Technologies') }}</a>
+                                <a class="dropdown-item" href="{{ route('projects.create')}}">{{ __('New Project') }}</a>
+
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+                @else
+                <li>
+                    <a class="nav-link" href="{{route('projects.index')}}">{{ __('Projects') }}</a>
+                </li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->

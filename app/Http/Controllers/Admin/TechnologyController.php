@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -17,14 +18,14 @@ class TechnologyController extends Controller
     {
         $technologies = Technology::all();
 
-        return view("admin.technologies.index");
+        return view("admin.technologies.index", compact("technologies"));
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('admin.technologies.create');
     }
 
     /**
@@ -32,7 +33,16 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $form_data = $request->validated();// per la validazione
+
+        $new_technology = new Technology();
+
+        $new_technology->name = $form_data['name'];
+        $new_technology->slug = Str::slug($new_technology->title);
+
+        $new_technology->save();
+
+        return to_route("tecnologies.index");
     }
 
     /**
@@ -48,7 +58,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return view("admin.technologies.edit", compact("technology"));
     }
 
     /**
@@ -56,7 +66,13 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $form_data = $request->validated();// per la validazione
+
+        $technology->name = $form_data['name'];
+
+        $technology->save();
+
+        return to_route("technologies.index", $technology);
     }
 
     /**
